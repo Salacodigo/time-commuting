@@ -23,14 +23,10 @@
                 <input type="text" name="" id="name" placeholder="Tu nombre">
             </label>
             <hr>
-            <label for="first-workday">
-                <span>Día inicial</span>
-                <input type="date" name="" id="first-workday">
-            </label>
-            <br>
-            <label for="final-workday">
-                <span>Día Final</span>
-                <input type="date" name="" id="final-workday">
+            <label for="number-of-days">
+                <span>Calcular resultados para</span>
+                <input type=""number name="" id="number-of-days">
+                <span>días</span>
             </label>
             <hr>
             <label for="morning-start-time">
@@ -52,10 +48,21 @@
                 <span>Llego a mi casa a las</span>
                 <input type="time" name="" id="nigth-arrive-time">
             </label>
-            <button type="submit">Enviar</button>
+            <br><br>
+            <button type="submit" id="submit-btn">Enviar</button>
+            <br><br>
+            <button type="reset">Reiniciar Fromulario</button>
+            <br><br>
+            <button type="button" id="clean-results-btn">Limpiar Resultados</button>
 
         </form>
-        <div id="results"></div>
+        <div id="results">
+            <div id="date-results">
+            </div>
+            <hr>
+            <div id="time-results">
+            </div>
+        </div>
 
     </main>
     <footer>
