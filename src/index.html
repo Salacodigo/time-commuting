@@ -20,33 +20,33 @@
         <form id="time-calculus" action="" class="m-20">
             <label for="name">
                 <span>Escribe tu nombre</span>
-                <input type="text" name="" id="name" placeholder="Tu nombre">
+                <input type="text" name="" id="name" placeholder="Tu nombre" required>
             </label>
             <hr>
             <label for="number-of-days">
                 <span>Calcular resultados para</span>
-                <input type=""number name="" id="number-of-days">
+                <input type=""number name="" id="number-of-days" required>
                 <span>días</span>
             </label>
             <hr>
             <label for="morning-start-time">
                 <span>Salgo de mi casa a las</span>
-                <input type="time" name="" id="morning-start-time">
+                <input type="time" name="" id="morning-start-time" required>
             </label>
             <br>
             <label for="morning-arrive-time">
                 <span>Llego a mi trabajo a las</span>
-                <input type="time" name="" id="morning-arrive-time">
+                <input type="time" name="" id="morning-arrive-time" required>
             </label>
             <hr>
             <label for="nigth-start-time">
                 <span>Salgo de mi trabajo a las</span>
-                <input type="time" name="" id="nigth-start-time">
+                <input type="time" name="" id="nigth-start-time" required>
             </label>
             <br>
             <label for="nigth-arrive-time">
                 <span>Llego a mi casa a las</span>
-                <input type="time" name="" id="nigth-arrive-time">
+                <input type="time" name="" id="nigth-arrive-time" required>
             </label>
             <br><br>
             <button type="submit" id="submit-btn">Enviar</button>
@@ -57,9 +57,6 @@
 
         </form>
         <div id="results">
-            <div id="date-results">
-            </div>
-            <hr>
             <div id="time-results">
             </div>
         </div>
@@ -68,8 +65,6 @@
     <footer>
 
     </footer>
-
-
 
     <script src="./js/app.js"></script>
 </body>

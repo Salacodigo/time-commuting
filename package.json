@@ -1,0 +1,27 @@
+{
+  "name": "timecommuting",
+  "version": "1.0.0",
+  "description": "time calculator",
+  "main": "src/js/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Salacodigo/time-commuting.git"
+  },
+  "keywords": [
+    "Time",
+    "Calculator",
+    "Commuting"
+  ],
+  "author": "Salacodigo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Salacodigo/time-commuting/issues"
+  },
+  "homepage": "https://github.com/Salacodigo/time-commuting#readme",
+  "dependencies": {
+    "moment": "^2.29.3"
+  }
+}
