@@ -12,8 +12,8 @@
         <nav></nav>
     </header>
     <main>
-        <figure>
-            <img src="" alt="Time ilustration">
+        <figure class="logo-container">
+            <img class="img-logo"src="https://media.istockphoto.com/vectors/rush-hour-vector-id1311955086?b=1&k=20&m=1311955086&s=170667a&w=0&h=3Cj4eb4STeBtS0byiorPkf-yoeJ53kKHMTzlGMcWoVk=" alt="Man running to workplace">
         </figure>
         <h1 class="title">¡Time lost at traffic!</h1>
 
@@ -41,15 +41,14 @@
             <label for="nigth-arrive-time" class="d-flex-vertical">
                 <span class="span-style">Llego a mi casa a las:</span>
                 <input class="input-field" type="time" name="" id="nigth-arrive-time" required>
-            </label>
-            <br>
-            <div class="d-flex">
-                <button type="submit" id="submit-btn" class="btn send">Enviar</button>
-                <button type="button" id="clean-results-btn" class="btn clean hidden">Limpiar Resultados</button>
-                <button type="reset" id="reset-btn" class="btn reset">Reiniciar Fromulario</button>
-            </div>
-
+            </label>            
         </form>
+        <br>
+        <div class="d-flex button-container">
+            <button type="submit" id="submit-btn" class="btn send">Enviar</button>
+            <button type="button" id="clean-results-btn" class="btn clean hidden">Limpiar Resultados</button>
+            <button type="reset" id="reset-btn" class="btn reset">Reiniciar Fromulario</button>
+        </div>
         <h3 class="title hidden" id="results-title">Resultados</h3>
         <div id="results">
             <div class="results d-flex-vertical" id="time-results">

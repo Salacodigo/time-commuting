@@ -1,3 +1,9 @@
+.button-container{
+    justify-content: center;
+    align-items: center;
+
+}
+
 .results{
     margin: 25px;
     justify-content: center;
@@ -14,7 +20,7 @@
             color: gray;
             font-size: 0.8rem;
             font-weight: bold;
-            margin: 2px 17px;
+            margin: 2px 15px;
         }
         
         .numeric-result{

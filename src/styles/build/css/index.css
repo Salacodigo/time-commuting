@@ -1,7 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@200;300;400;500;600&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100;200;300;400;500;600&display=swap");
-.m-20 {
-  margin: 20px;
+.logo-container {
+  height: 50px;
+}
+
+.img-logo {
+  position: absolute;
+  margin: 0 50% 0 0;
+  justify-self: center;
+  height: 80px;
+  border-bottom: 0px;
+  object-fit: contain;
 }
 
 .title {
@@ -41,10 +50,6 @@
   max-width: 300px;
 }
 
-.m-20 {
-  margin: 20px;
-}
-
 .btn {
   width: 50%;
   min-width: 120px;
@@ -53,19 +58,21 @@
   display: flex;
   padding: 5px 25px;
   margin: 5px;
+  justify-self: center;
   justify-content: center;
   align-items: center;
   font-size: 1rem;
+}
+.btn:hover {
+  cursor: pointer;
+  font: bold;
 }
 
 .send {
   background-color: greenyellow;
   border-radius: 10px;
   border-color: greenyellow;
-}
-.send:hover {
-  cursor: pointer;
-  font: bold;
+  color: black;
 }
 
 .reset {
@@ -74,19 +81,16 @@
   border-color: red;
   color: lightgray;
 }
-.reset:hover {
-  cursor: pointer;
-  font: bold;
-}
 
 .clean {
   background-color: lightgray;
   border-radius: 10px;
   border-color: lightgray;
 }
-.clean:hover {
-  cursor: pointer;
-  font: bold;
+
+.button-container {
+  justify-content: center;
+  align-items: center;
 }
 
 .results {
@@ -105,7 +109,7 @@
   color: gray;
   font-size: 0.8rem;
   font-weight: bold;
-  margin: 2px 17px;
+  margin: 2px 15px;
 }
 .results .result-container .numeric-result {
   color: black;
@@ -120,6 +124,10 @@
   padding: 0;
   min-width: 320px;
   max-width: 768px;
+}
+
+.m-20 {
+  margin: 20px;
 }
 
 .body {

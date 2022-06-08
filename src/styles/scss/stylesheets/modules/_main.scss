@@ -1,7 +1,13 @@
-
-
-.m-20 {
-    margin: 20px;
+.logo-container{
+    height: 50px;
+}
+.img-logo{
+    position:absolute;
+    margin: 0 50% 0 0;
+    justify-self: center;
+    height:80px;
+    border-bottom: 0px;
+    object-fit: contain;
 }
 
 .title{

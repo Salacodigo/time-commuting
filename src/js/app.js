@@ -34,7 +34,7 @@ function eventListeners(){
         form.addEventListener('submit', submitForm);
         submitButton.addEventListener('click', submitForm);
         resetButton.addEventListener('click', resetForm);
-        cleanButton.addEventListener('click', hideCleanButton);
+        cleanButton.addEventListener('click', cleanButtonActionUI);
 
         writeDefaultValuesInForm();
     })
@@ -83,7 +83,7 @@ function submitForm(e){
         return;
     }
 
-    hideSubmitButton();
+    submitFormActionUI();
 
 
     informationObject = {
@@ -98,9 +98,16 @@ function submitForm(e){
     calculateTimeDifference(informationObject);
 }
 
-function hideSubmitButton(){
+function submitFormActionUI(){
+    
+    form.classList.remove('showing')
+    form.classList.add('hidden');
+
     submitButton.classList.remove('showing')
     submitButton.classList.add('hidden');
+    
+    resetButton.classList.remove('showing')
+    resetButton.classList.add('hidden');
     
     cleanButton.classList.remove('hidden');
     cleanButton.classList.add('showing');
@@ -109,9 +116,15 @@ function hideSubmitButton(){
     resultsTitle.classList.add('showing');
 }
 
-function hideCleanButton(){
+function cleanButtonActionUI(){
+    form.classList.remove('hidden');
+    form.classList.add('showing')
+
     cleanButton.classList.remove('showing');
     cleanButton.classList.add('hidden');
+    
+    resetButton.classList.remove('hidden');
+    resetButton.classList.add('showing')
 
     submitButton.classList.remove('hidden');
     submitButton.classList.add('showing')
@@ -276,9 +289,9 @@ function printTimeDifferenceResults(timeResultsObj){
         const resultMeasure = document.createElement('p')
         resultMeasure.classList.add('text-result-magnitude');
         if(time != 'totalTime'){
-            resultMeasure.innerHTML = `[Hours:Minutes]`;
+            resultMeasure.innerHTML = `[Hours : Minutes]`;
         }else{
-            resultMeasure.innerHTML = `[Years:Months:Days:Hours:Minutes]`;
+            resultMeasure.innerHTML = `[Years : Months : Days : Hours : Minutes]`;
         }
 
         
