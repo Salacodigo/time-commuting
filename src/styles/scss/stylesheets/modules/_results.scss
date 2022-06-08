@@ -1,18 +1,27 @@
 .results{
     margin: 25px;
+    justify-content: center;
+    align-items: center;
     
     .result-container{
         margin: 5px 0px 10px;
+        
         .text-result{
             font-size: 1rem;
             color: gray;
+        }
+        .text-result-magnitude{
+            color: gray;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin: 2px 17px;
         }
         
         .numeric-result{
             color: black;
             font-size: 1.5rem;
             margin-left: 25px;
-            letter-spacing: 2px;
+            letter-spacing: 2.8px;
         }
 
     }

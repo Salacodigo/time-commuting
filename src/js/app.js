@@ -273,6 +273,15 @@ function printTimeDifferenceResults(timeResultsObj){
         resultText.classList.add('text-result');
         resultText.innerHTML = `Tiempo de viaje: ${time}`;
         
+        const resultMeasure = document.createElement('p')
+        resultMeasure.classList.add('text-result-magnitude');
+        if(time != 'totalTime'){
+            resultMeasure.innerHTML = `[Hours:Minutes]`;
+        }else{
+            resultMeasure.innerHTML = `[Years:Months:Days:Hours:Minutes]`;
+        }
+
+        
         const resultValue = document.createElement('p');
         resultValue.classList.add('numeric-result');
         resultValue.innerHTML = `${timeResultsObj[time]}`;
@@ -280,6 +289,7 @@ function printTimeDifferenceResults(timeResultsObj){
         //formatTime
 
         divResult.appendChild(resultText);
+        divResult.appendChild(resultMeasure);
         divResult.appendChild(resultValue);
 
         divTimeResults.appendChild(divResult);
