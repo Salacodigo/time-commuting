@@ -87,16 +87,17 @@
   margin: 25px;
 }
 .results .result-container {
-  margin: 5px 0px 15px;
+  margin: 5px 0px 10px;
 }
 .results .result-container .text-result {
   font-size: 1rem;
   color: gray;
 }
 .results .result-container .numeric-result {
-  color: gray;
+  color: black;
   font-size: 1.5rem;
   margin-left: 25px;
+  letter-spacing: 2px;
 }
 
 * {
