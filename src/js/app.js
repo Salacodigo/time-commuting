@@ -7,9 +7,10 @@ const inputNigthStartTime = document.getElementById('nigth-start-time');
 const inputNigthArriveTime = document.getElementById('nigth-arrive-time');
 
 const submitButton = document.getElementById('submit-btn');
+const resetButton = document.getElementById('reset-btn');
 const cleanButton = document.getElementById('clean-results-btn');
 
-
+const resultsTitle = document.getElementById('results-title');
 const divResults = document.getElementById('results');
 
 //Object form
@@ -30,7 +31,11 @@ const form = document.getElementById('time-calculus');
 eventListeners();
 function eventListeners(){
     document.addEventListener('DOMContentLoaded', () => {
-        form.addEventListener('submit', submitForm)
+        form.addEventListener('submit', submitForm);
+        submitButton.addEventListener('click', submitForm);
+        resetButton.addEventListener('click', resetForm);
+        cleanButton.addEventListener('click', hideCleanButton);
+
         writeDefaultValuesInForm();
     })
     cleanButton.addEventListener('click', cleanResults);
@@ -55,6 +60,7 @@ function submitForm(e){
 
     cleanResults();
 
+
     let informationObject = {};
 
     const name = inputName.value;
@@ -73,8 +79,11 @@ function submitForm(e){
         nigthArriveTime == ""
 
     ) {
+        alert("No ha diligenciado todos los campos del formulario", "error");
         return;
     }
+
+    hideSubmitButton();
 
 
     informationObject = {
@@ -87,6 +96,29 @@ function submitForm(e){
     }
 
     calculateTimeDifference(informationObject);
+}
+
+function hideSubmitButton(){
+    submitButton.classList.remove('showing')
+    submitButton.classList.add('hidden');
+    
+    cleanButton.classList.remove('hidden');
+    cleanButton.classList.add('showing');
+    
+    resultsTitle.classList.remove('hidden');
+    resultsTitle.classList.add('showing');
+}
+
+function hideCleanButton(){
+    cleanButton.classList.remove('showing');
+    cleanButton.classList.add('hidden');
+
+    submitButton.classList.remove('hidden');
+    submitButton.classList.add('showing')
+
+    resultsTitle.classList.remove('showing');
+    resultsTitle.classList.add('hidden');
+    
 }
 
 //Calculating values
@@ -153,7 +185,6 @@ function timeSum(timeValues){
     let result = [0,0];
 
     for(time in timeValues){
-        console.log([time, timeValues[time]]);
         let splitTime = timeValues[time].split(':');
         result[0] += Number(splitTime[0]);
         result[1] += Number(splitTime[1]);   
@@ -187,8 +218,6 @@ function calculateTotalTime(totalTimePerDay, numberOfDays){
     result[minutes] = timeSplit[1] * numberOfDays;
     result[hours] = timeSplit[0] * numberOfDays;
 
-    console.log({timeSplit, result})
-
     //Formating time
     result[hours] = result[hours] + Math.floor(result[minutes] / minutesPerHour);
     result[minutes] = result[minutes] % minutesPerHour;
@@ -202,7 +231,6 @@ function calculateTotalTime(totalTimePerDay, numberOfDays){
     result[years] = result[years] + Math.floor(result[months] / monthsPerYear);
     result[months] = result[months] % monthsPerYear;
     
-    console.log({result});
     let formatedTextTime = formatTime(result);
 
     return formatedTextTime;
@@ -211,7 +239,6 @@ function calculateTotalTime(totalTimePerDay, numberOfDays){
 function formatTime(array){
     let resultText = '';
     let arraySize = array.length;
-    console.log({arraySize})
 
     for( let position = 0; position < arraySize ; position++ ){
         if(position == arraySize -1){
@@ -240,11 +267,14 @@ function printTimeDifferenceResults(timeResultsObj){
 
     for (time in timeResultsObj){
         const divResult = document.createElement('div');
+        divResult.classList.add('result-container');
 
         const resultText = document.createElement('p');
+        resultText.classList.add('text-result');
         resultText.innerHTML = `Tiempo de viaje: ${time}`;
         
         const resultValue = document.createElement('p');
+        resultValue.classList.add('numeric-result');
         resultValue.innerHTML = `${timeResultsObj[time]}`;
 
         //formatTime

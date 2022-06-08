@@ -1,7 +1,27 @@
 
+@import 'modules/variables';
 @import 'modules/main';
+@import 'modules/form';
+@import 'modules/results';
 
 
-.big-text {
-    font-size: 2rem;
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@200;300;400;500;600&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100;200;300;400;500;600&display=swap');
+
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: $font-sans;
+    font-size: 1rem;
+}
+
+.hidden{
+    display: none;
+}
+
+.showing{
+    display: flex;
 }

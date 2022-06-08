@@ -7,7 +7,7 @@
     <title>Time Value</title>
     <link rel="stylesheet" href="./styles/build/css/index.css">
 </head>
-<body class="green-background">
+<body class="green-background m-20">
     <header>
         <nav></nav>
     </header>
@@ -15,49 +15,48 @@
         <figure>
             <img src="" alt="Time ilustration">
         </figure>
-        <h1 class="big-text">¡Time lost at traffic!</h1>
+        <h1 class="title">¡Time lost at traffic!</h1>
 
-        <form id="time-calculus" action="" class="m-20">
-            <label for="name">
-                <span>Escribe tu nombre</span>
-                <input type="text" name="" id="name" placeholder="Tu nombre" required>
+        <form id="time-calculus" action="" class="m-20 d-flex-vertical">
+            <label for="name" class="d-flex-vertical">
+                <span class="span-style">Escribe tu nombre</span>
+                <input class="input-field" type="text" name="" id="name" placeholder="Tu nombre" required>
             </label>
-            <hr>
-            <label for="number-of-days">
-                <span>Calcular resultados para</span>
-                <input type=""number name="" id="number-of-days" required>
-                <span>días</span>
+            <label for="number-of-days" class="d-flex-vertical">
+                <span class="span-style">Cantidad de días para realizar el cálculo:</span>
+                <input class="input-field" type="number" name="" id="number-of-days" required>
             </label>
-            <hr>
-            <label for="morning-start-time">
-                <span>Salgo de mi casa a las</span>
-                <input type="time" name="" id="morning-start-time" required>
+            <label for="morning-start-time" class="d-flex-vertical">
+                <span class="span-style">Salgo de mi casa a las:</span>
+                <input class="input-field" type="time" name="" id="morning-start-time" required>
+            </label>
+            <label for="morning-arrive-time" class="d-flex-vertical">
+                <span class="span-style">Llego a mi trabajo a las:</span>
+                <input class="input-field" type="time" name="" id="morning-arrive-time" required>
+            </label>
+            <label for="nigth-start-time" class="d-flex-vertical">
+                <span class="span-style">Salgo de mi trabajo a las:</span>
+                <input class="input-field" type="time" name="" id="nigth-start-time" required>
+            </label>
+            <label for="nigth-arrive-time" class="d-flex-vertical">
+                <span class="span-style">Llego a mi casa a las:</span>
+                <input class="input-field" type="time" name="" id="nigth-arrive-time" required>
             </label>
             <br>
-            <label for="morning-arrive-time">
-                <span>Llego a mi trabajo a las</span>
-                <input type="time" name="" id="morning-arrive-time" required>
-            </label>
-            <hr>
-            <label for="nigth-start-time">
-                <span>Salgo de mi trabajo a las</span>
-                <input type="time" name="" id="nigth-start-time" required>
-            </label>
-            <br>
-            <label for="nigth-arrive-time">
-                <span>Llego a mi casa a las</span>
-                <input type="time" name="" id="nigth-arrive-time" required>
-            </label>
-            <br><br>
-            <button type="submit" id="submit-btn">Enviar</button>
-            <br><br>
-            <button type="reset">Reiniciar Fromulario</button>
-            <br><br>
-            <button type="button" id="clean-results-btn">Limpiar Resultados</button>
+            <div class="d-flex">
+                <button type="submit" id="submit-btn" class="btn send">Enviar</button>
+                <button type="button" id="clean-results-btn" class="btn clean hidden">Limpiar Resultados</button>
+                <button type="reset" id="reset-btn" class="btn reset">Reiniciar Fromulario</button>
+            </div>
 
         </form>
+        <h3 class="title hidden" id="results-title">Resultados</h3>
         <div id="results">
-            <div id="time-results">
+            <div class="results d-flex-vertical" id="time-results">
+                <div class="result-container">
+                    <p class="text-result">Tiempo de viaje: morningTime</p>
+                    <p class="numeric-result">01:30</p>
+                </div>
             </div>
         </div>
 
