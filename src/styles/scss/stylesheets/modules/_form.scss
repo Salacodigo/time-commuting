@@ -6,7 +6,7 @@
 .d-flex-vertical{
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 70%;
 }
 
 .d-flex{
@@ -15,17 +15,52 @@
 
 .span-style{
     color: gray;
+    margin: 0px 0px 0px 40px;
 }
 
 .input-field{
     align-self: center;
     border-radius: 5px;
-    margin: 8px 20px 20px;
+    margin: 5px 20px 10px;
     padding: 6px;
-    width:80%;
-    min-width: 200px;
+    width:60%;
+    min-width: 150px;
     max-width: 300px;
 }
+
+
+.title-image-container{
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 20px 0px;
+    
+    .title-secondary{
+        display: flex;
+        justify-content: center;
+        font-size: 1.2rem;
+        font-weight: bold;
+        min-width: 250px;
+        max-width: 100px;
+        font-family: $font-mono;
+
+    }
+    
+    .title-img-container{
+        object-fit: contain;
+        height: 40px;
+        width: 40px;
+        min-width: 50px;
+        max-width: 100px;
+    }
+
+    .reflect-h-img{
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+    }
+}
+
 
 .btn{
     width: 50%;
@@ -39,6 +74,7 @@
     justify-content: center;
     align-items: center;
     font-size: 1rem;
+    letter-spacing: 2.8px;
     &:hover{
         cursor: pointer;
         font: bold;
@@ -60,8 +96,8 @@
 }
 
 .clean{
-    background-color:lightgray;
+    background-color: lightsalmon;
     border-radius: 10px;
-    border-color: lightgray;
+    border-color: lightsalmon;
 }
 

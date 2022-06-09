@@ -1,24 +1,23 @@
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@200;300;400;500;600&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100;200;300;400;500;600&display=swap");
 .logo-container {
-  height: 50px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  margin: -10px;
 }
 
 .img-logo {
-  position: absolute;
-  margin: 0 50% 0 0;
-  justify-self: center;
-  height: 80px;
-  border-bottom: 0px;
   object-fit: contain;
 }
 
 .title {
-  border-bottom: 1px solid red;
+  text-align: center;
+  bottom: 2px solid gray;
   display: flex;
   justify-content: center;
   font-size: 2.5rem;
-  margin: 30px 0px;
+  margin: 10px 0px 15px;
   font-family: "IBM Plex Mono", monospace;
 }
 
@@ -29,7 +28,7 @@
 .d-flex-vertical {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 70%;
 }
 
 .d-flex {
@@ -38,16 +37,45 @@
 
 .span-style {
   color: gray;
+  margin: 0px 0px 0px 40px;
 }
 
 .input-field {
   align-self: center;
   border-radius: 5px;
-  margin: 8px 20px 20px;
+  margin: 5px 20px 10px;
   padding: 6px;
-  width: 80%;
-  min-width: 200px;
+  width: 60%;
+  min-width: 150px;
   max-width: 300px;
+}
+
+.title-image-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 20px 0px;
+}
+.title-image-container .title-secondary {
+  display: flex;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  min-width: 250px;
+  max-width: 100px;
+  font-family: "IBM Plex Mono", monospace;
+}
+.title-image-container .title-img-container {
+  object-fit: contain;
+  height: 40px;
+  width: 40px;
+  min-width: 50px;
+  max-width: 100px;
+}
+.title-image-container .reflect-h-img {
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
 }
 
 .btn {
@@ -62,6 +90,7 @@
   justify-content: center;
   align-items: center;
   font-size: 1rem;
+  letter-spacing: 2.8px;
 }
 .btn:hover {
   cursor: pointer;
@@ -83,9 +112,9 @@
 }
 
 .clean {
-  background-color: lightgray;
+  background-color: lightsalmon;
   border-radius: 10px;
-  border-color: lightgray;
+  border-color: lightsalmon;
 }
 
 .button-container {
@@ -94,12 +123,16 @@
 }
 
 .results {
-  margin: 25px;
+  margin: 25px auto;
   justify-content: center;
   align-items: center;
 }
+.results .p-Name {
+  margin: 0px 0px 10px 0px;
+  letter-spacing: 2px;
+}
 .results .result-container {
-  margin: 5px 0px 10px;
+  margin: 5px 0px 15px 60px;
 }
 .results .result-container .text-result {
   font-size: 1rem;
@@ -130,9 +163,13 @@
   margin: 20px;
 }
 
-.body {
+.m-10 {
+  margin: 10px;
+}
+
+.body-text {
   font-family: "IBM Plex Sans", sans-serif;
-  font-size: 1rem;
+  font-size: 1.15rem;
 }
 
 .hidden {

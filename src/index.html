@@ -7,7 +7,7 @@
     <title>Time Value</title>
     <link rel="stylesheet" href="./styles/build/css/index.css">
 </head>
-<body class="green-background m-20">
+<body class="body-text m-20">
     <header>
         <nav></nav>
     </header>
@@ -17,15 +17,19 @@
         </figure>
         <h1 class="title">¡Time lost at traffic!</h1>
 
-        <form id="time-calculus" action="" class="m-20 d-flex-vertical">
+        <form id="time-calculus" action="" class="m-5 d-flex-vertical">
             <label for="name" class="d-flex-vertical">
-                <span class="span-style">Escribe tu nombre</span>
+                <span class="span-style">Nombre:</span>
                 <input class="input-field" type="text" name="" id="name" placeholder="Tu nombre" required>
             </label>
             <label for="number-of-days" class="d-flex-vertical">
-                <span class="span-style">Cantidad de días para realizar el cálculo:</span>
+                <span class="span-style">Cantidad de días:</span>
                 <input class="input-field" type="number" name="" id="number-of-days" required>
             </label>
+            <div class="title-image-container">
+                <p class="title-secondary">Del hogar al trabajo</p>
+                <img class="reflect-h-img title-img-container" src="https://i.dlpng.com/static/png/6945381_preview.png" alt="commuting to work">
+            </div>
             <label for="morning-start-time" class="d-flex-vertical">
                 <span class="span-style">Salgo de mi casa a las:</span>
                 <input class="input-field" type="time" name="" id="morning-start-time" required>
@@ -34,6 +38,10 @@
                 <span class="span-style">Llego a mi trabajo a las:</span>
                 <input class="input-field" type="time" name="" id="morning-arrive-time" required>
             </label>
+            <div class="title-image-container">
+                <p class="title-secondary">Del trabajo al hogar</p>
+                <img class="title-img-container"  src="https://i.dlpng.com/static/png/6945381_preview.png" alt="Commuting to home">
+            </div>
             <label for="nigth-start-time" class="d-flex-vertical">
                 <span class="span-style">Salgo de mi trabajo a las:</span>
                 <input class="input-field" type="time" name="" id="nigth-start-time" required>

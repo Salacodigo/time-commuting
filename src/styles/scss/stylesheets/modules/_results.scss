@@ -5,12 +5,17 @@
 }
 
 .results{
-    margin: 25px;
+    margin: 25px auto;
     justify-content: center;
     align-items: center;
+
+    .p-Name{
+        margin: 0px 0px 10px 0px;
+        letter-spacing: 2px;
+    }
     
     .result-container{
-        margin: 5px 0px 10px;
+        margin: 5px 0px 15px 60px;
         
         .text-result{
             font-size: 1rem;

@@ -47,7 +47,7 @@ function eventListeners(){
 
 function writeDefaultValuesInForm(){
     inputName.value = "Santiago";
-    inputNumberOfDays.value = 1;
+    inputNumberOfDays.value = 250;
     inputMorningStartTime.value = '08:00';
     inputMorningArriveTime.value = '09:30';
     inputNigthStartTime.value = '17:50';
@@ -94,7 +94,7 @@ function submitForm(e){
         nigthStartTime,
         nigthArriveTime
     }
-
+    printName(informationObject);
     calculateTimeDifference(informationObject);
 }
 
@@ -308,6 +308,19 @@ function printTimeDifferenceResults(timeResultsObj){
         divTimeResults.appendChild(divResult);
     }
 
+}
+
+function printName(informationObject){
+
+    const {name, numberOfDays} = informationObject;
+
+    const divTimeResults = document.getElementById('time-results');
+
+    const pName = document.createElement('p');
+    pName.classList.add('p-Name');
+    pName.innerHTML = `${name}, los tiempos para ${numberOfDays} días son:`;
+
+    divTimeResults.appendChild(pName);
 }
 
 function cleanResults(){
