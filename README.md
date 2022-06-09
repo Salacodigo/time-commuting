@@ -1,4 +1,5 @@
-# time-commuting
+#Time commuting
+[Link to project](https://salacodigo.github.io/time-commuting/src/)
 
 Developed in Javascript Vanilla, CSS - Sass
 
