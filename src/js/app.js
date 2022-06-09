@@ -13,6 +13,10 @@ const cleanButton = document.getElementById('clean-results-btn');
 const resultsTitle = document.getElementById('results-title');
 const divResults = document.getElementById('results');
 
+// Form
+const form = document.getElementById('time-calculus');
+
+
 //Object form
 let informationObject = {
     name: "",
@@ -23,8 +27,6 @@ let informationObject = {
     nigthArriveTime: "",
 };
 
-// Form
-const form = document.getElementById('time-calculus');
 
 
 // Event Listeners
