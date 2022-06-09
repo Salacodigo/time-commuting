@@ -199,7 +199,7 @@ function timeDifference(startTime, endTime){
 function timeSum(timeValues){
     let result = [0,0];
 
-    for(time in timeValues){
+    for(let time in timeValues){
         let splitTime = timeValues[time].split(':');
         result[0] += Number(splitTime[0]);
         result[1] += Number(splitTime[1]);   
@@ -280,7 +280,7 @@ function printTimeDifferenceResults(timeResultsObj){
     const divTimeResults = document.getElementById('time-results');
 
 
-    for (time in timeResultsObj){
+    for (let time in timeResultsObj){
         const divResult = document.createElement('div');
         divResult.classList.add('result-container');
 
