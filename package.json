@@ -1,6 +1,7 @@
 {
   "name": "timecommuting",
   "version": "1.0.0",
+  "type": "module",
   "description": "time calculator",
   "main": "src/js/app.js",
   "scripts": {

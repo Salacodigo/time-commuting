@@ -1,5 +1,20 @@
+import { 
+    timeSum,
+    formatTime,
+    calculateTotalTime,
+    calculateTimeDifference,
+    timeDifference
+} from "./timeOperations.js"
+
+import {
+    printName
+} from "./UI.js"
+
+
+
 //Constants
 const inputName = document.getElementById('name');
+
 const inputNumberOfDays = document.getElementById('number-of-days')
 const inputMorningStartTime = document.getElementById('morning-start-time');
 const inputMorningArriveTime = document.getElementById('morning-arrive-time');
@@ -96,6 +111,7 @@ function submitForm(e){
         nigthStartTime,
         nigthArriveTime
     }
+    console.log({informationObject})
     printName(informationObject);
     calculateTimeDifference(informationObject);
 }
@@ -137,6 +153,7 @@ function cleanButtonActionUI(){
 }
 
 //Calculating values
+/*
 function calculateTimeDifference(informationObject){
     const {
         numberOfDays,
@@ -171,7 +188,8 @@ function calculateTimeDifference(informationObject){
     
     printTimeDifferenceResults(timesObj);
 }
-
+*/
+/*
 function timeDifference(startTime, endTime){
 
     let startTimeArray = startTime.split(':');
@@ -195,7 +213,8 @@ function timeDifference(startTime, endTime){
 
     return formatedTextTime;
 }
-
+*/
+/*
 function timeSum(timeValues){
     let result = [0,0];
 
@@ -212,7 +231,9 @@ function timeSum(timeValues){
 
     return formatedTimeText;
 }
+*/
 
+/*
 function calculateTotalTime(totalTimePerDay, numberOfDays){
     
     const minutesPerHour = 60;
@@ -250,7 +271,9 @@ function calculateTotalTime(totalTimePerDay, numberOfDays){
 
     return formatedTextTime;
 }
+*/
 
+/*
 function formatTime(array){
     let resultText = '';
     let arraySize = array.length;
@@ -273,8 +296,11 @@ function formatTime(array){
 
     return resultText;
 }
+*/
+
 
 // Showing results
+/*
 function printTimeDifferenceResults(timeResultsObj){
 
     const divTimeResults = document.getElementById('time-results');
@@ -311,7 +337,8 @@ function printTimeDifferenceResults(timeResultsObj){
     }
 
 }
-
+*/
+/*
 function printName(informationObject){
 
     const {name, numberOfDays} = informationObject;
@@ -324,6 +351,7 @@ function printName(informationObject){
 
     divTimeResults.appendChild(pName);
 }
+*/
 
 function cleanResults(){
     const divTimeResults = document.getElementById('time-results');
