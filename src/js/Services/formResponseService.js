@@ -1,4 +1,5 @@
-const url = "http://127.0.0.1:4000";
+// const url = "http://127.0.0.1:4000"; // Localhost
+const url = "https://time-commuting-backend.herokuapp.com/"; // Heroku
 
 async function postResponse(informationObject){
 
@@ -11,7 +12,7 @@ async function postResponse(informationObject){
         body: JSON.stringify(informationObject)
     });
     let response = await request.json();
-    
+
     console.log({"PostResponse":response});
 
  }
