@@ -29,6 +29,7 @@ const inputNigthArriveTime = document.getElementById('nigth-arrive-time');
 const submitButton = document.getElementById('submit-btn');
 const resetButton = document.getElementById('reset-btn');
 const cleanButton = document.getElementById('clean-results-btn');
+const overallResultsButton = document.getElementById('overall-results-btn');
 
 const resultsTitle = document.getElementById('results-title');
 const divResults = document.getElementById('results');
@@ -57,6 +58,7 @@ function eventListeners(){
         submitButton.addEventListener('click', submitForm);
         resetButton.addEventListener('click', resetForm);
         cleanButton.addEventListener('click', cleanButtonActionUI);
+        overallResultsButton.addEventListener('click', overallResults)
 
         writeDefaultValuesInForm();
     })
@@ -116,12 +118,18 @@ async function submitForm(e){
         nigthArriveTime
     }
     
-    // await getResults();
     await postResponse(informationObject);
     submitFormActionUI();
     
     printName(informationObject);
     calculateTimeDifference(informationObject);
+}
+
+async function overallResults(){
+    let response = await getResults();
+
+    console.log({response})
+
 }
 
 function submitFormActionUI(){
@@ -138,6 +146,9 @@ function submitFormActionUI(){
     cleanButton.classList.remove('hidden');
     cleanButton.classList.add('showing');
     
+    overallResultsButton.classList.remove('hidden');
+    overallResultsButton.classList.add('showing');
+    
     resultsTitle.classList.remove('hidden');
     resultsTitle.classList.add('showing');
 }
@@ -148,6 +159,9 @@ function cleanButtonActionUI(){
 
     cleanButton.classList.remove('showing');
     cleanButton.classList.add('hidden');
+    
+    overallResultsButton.classList.remove('showing');
+    overallResultsButton.classList.add('hidden');
     
     resetButton.classList.remove('hidden');
     resetButton.classList.add('showing')

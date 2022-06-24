@@ -13,23 +13,19 @@ async function postResponse(informationObject){
     });
     let response = await request.json();
 
-    console.log({"PostResponse":response});
+    return response;
 
- }
+}
 
- async function getResults(){
+async function getResults(){
 
-   let request = await fetch(`${url}/api/form/results`);
-   let response = await request.json()
-      
+  let request = await fetch(`${url}/api/form/results`);
+  let response = await request.json()
+  return response
 
-   console.log(
-      response
-   )
+}
 
- }
-
- export {
+export {
    postResponse,
    getResults
- }
+}
