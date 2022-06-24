@@ -112,10 +112,17 @@
 }
 
 .clean {
-  background-color: lightsalmon;
+  background-color: lightblue;
   border-radius: 10px;
-  border-color: lightsalmon;
-  color: lightgray;
+  border-color: lightblue;
+  color: black;
+}
+
+.overall {
+  background-color: greenyellow;
+  border-radius: 10px;
+  border-color: greenyellow;
+  color: black;
 }
 
 .button-container {
