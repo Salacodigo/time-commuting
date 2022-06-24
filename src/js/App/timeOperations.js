@@ -8,7 +8,7 @@ import {
 // Read form response and calculate time differences
 function calculateTimeDifference(informationObject){
     const {
-        numberOfDays,
+        daysQuantity,
         morningStartTime,
         morningArriveTime,
         nigthStartTime,
@@ -29,7 +29,7 @@ function calculateTimeDifference(informationObject){
 
     let totalTimePerDay = timeSum({morningTime,
         nigthTime});
-    let totalTime = calculateTotalTime(totalTimePerDay, numberOfDays);
+    let totalTime = calculateTotalTime(totalTimePerDay, daysQuantity);
 
     let timesObj = {
         morningTime,
@@ -37,7 +37,7 @@ function calculateTimeDifference(informationObject){
         totalTimePerDay,
         totalTime
     }
-    
+
     printTimeDifferenceResults(timesObj);
 }
 
@@ -109,7 +109,7 @@ function timeDifference(startTime, endTime){
 }
 
 // Calculate the total time taking in consideration the number of days
-function calculateTotalTime(totalTimePerDay, numberOfDays){
+function calculateTotalTime(totalTimePerDay, daysQuantity){
     
     const minutesPerHour = 60;
     const hoursPerDay = 24;
@@ -126,8 +126,8 @@ function calculateTotalTime(totalTimePerDay, numberOfDays){
     let result = [0,0,0,0,0] // years, months, days, hours, minutes
 
     //Total time
-    result[minutes] = timeSplit[1] * numberOfDays;
-    result[hours] = timeSplit[0] * numberOfDays;
+    result[minutes] = timeSplit[1] * daysQuantity;
+    result[hours] = timeSplit[0] * daysQuantity;
 
     //Formating time
     result[hours] = result[hours] + Math.floor(result[minutes] / minutesPerHour);

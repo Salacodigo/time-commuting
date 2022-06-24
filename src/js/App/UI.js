@@ -2,7 +2,6 @@ function printTimeDifferenceResults(timeResultsObj){
 
     const divTimeResults = document.getElementById('time-results');
 
-
     for (let time in timeResultsObj){
         const divResult = document.createElement('div');
         divResult.classList.add('result-container');
@@ -19,12 +18,9 @@ function printTimeDifferenceResults(timeResultsObj){
             resultMeasure.innerHTML = `[Years : Months : Days : Hours : Minutes]`;
         }
 
-        
         const resultValue = document.createElement('p');
         resultValue.classList.add('numeric-result');
         resultValue.innerHTML = `${timeResultsObj[time]}`;
-
-        //formatTime
 
         divResult.appendChild(resultText);
         divResult.appendChild(resultMeasure);
@@ -37,13 +33,13 @@ function printTimeDifferenceResults(timeResultsObj){
 
 function printName(informationObject){
 
-    const {name, numberOfDays} = informationObject;
+    const {name, daysQuantity} = informationObject;
 
     const divTimeResults = document.getElementById('time-results');
 
     const pName = document.createElement('p');
     pName.classList.add('p-Name');
-    pName.innerHTML = `${name}, los tiempos para ${numberOfDays} días son:`;
+    pName.innerHTML = `${name}, los tiempos para ${daysQuantity} días son:`;
 
     divTimeResults.appendChild(pName);
 }
