@@ -1,3 +1,10 @@
+import{
+    form,
+    cleanHTML
+} from './app.js'
+
+
+
 function printTimeDifferenceResults(timeResultsObj){
 
     const divTimeResults = document.getElementById('time-results');
@@ -44,9 +51,32 @@ function printName(informationObject){
     divTimeResults.appendChild(pName);
 }
 
+function showMessage(msg, container){
+    
+    const divMessage = document.createElement('div');
+    divMessage.id = 'divMessage';
+    divMessage.classList.add('message');
+    
+    divMessage.innerHTML = `<h3>${msg}</h3>`;
+    
+    container.appendChild(divMessage);
+
+    return true;
+}
+
+function hideMessage(){
+    try {
+        const divMessage = document.getElementById('divMessage');
+        divMessage.remove();
+    } catch (error) {
+        console.log(error);
+    }
+}
 
 
 export {
     printTimeDifferenceResults,
-    printName
+    printName,
+    showMessage,
+    hideMessage
 }

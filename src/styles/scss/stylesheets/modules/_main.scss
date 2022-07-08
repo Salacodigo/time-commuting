@@ -17,3 +17,14 @@
     margin: 10px 0px 15px;
     font-family: $font-mono;
 }
+
+.message{
+    display: flex;
+    align-self: center;
+    background-color: lightgreen;
+    padding: 15px;
+    margin: 0px 0px 15px;
+    border-radius: 15px;
+    font-size: 2rem;
+    color: white;
+}

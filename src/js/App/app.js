@@ -7,7 +7,9 @@ import {
 } from "./timeOperations.js"
 
 import {
-    printName
+    printName,
+    showMessage,
+    hideMessage
 } from "./UI.js"
 
 import { 
@@ -33,6 +35,8 @@ const overallResultsButton = document.getElementById('overall-results-btn');
 
 const resultsTitle = document.getElementById('results-title');
 const divResults = document.getElementById('results');
+const divTimeResults = document.getElementById('time-results');
+const divLoading = document.getElementById('loading');
 
 // Form
 const form = document.getElementById('time-calculus');
@@ -118,15 +122,26 @@ async function submitForm(e){
         nigthArriveTime
     }
     
-    await postResponse(informationObject);
-    submitFormActionUI();
-    
-    printName(informationObject);
-    calculateTimeDifference(informationObject);
+    showMessage("Esperando Resultados", divLoading)
+
+    postResponse(informationObject)
+    .then((res)=>{
+        console.log({res});
+    })
+    .then(()=>{
+        setTimeout(() => {
+            hideMessage(divLoading)
+        } , 1500);
+    })
+    .then(()=>{
+        submitFormActionUI();
+        printName(informationObject);
+        calculateTimeDifference(informationObject);
+    })
 }
 
 async function overallResults(){
-    let response = await getResults();
+    let response = getResults();
 
     console.log({response})
 
@@ -175,7 +190,6 @@ function cleanButtonActionUI(){
 }
 
 function cleanResults(){
-    const divTimeResults = document.getElementById('time-results');
     cleanHTML(divTimeResults);
 }
 
@@ -187,4 +201,10 @@ function cleanHTML(container){
     while(container.firstChild){
         container.removeChild(container.firstChild);
     }
+}
+
+
+export{
+    form,
+    cleanHTML
 }

@@ -21,6 +21,17 @@
   font-family: "IBM Plex Mono", monospace;
 }
 
+.message {
+  display: flex;
+  align-self: center;
+  background-color: lightgreen;
+  padding: 15px;
+  margin: 0px 0px 15px;
+  border-radius: 15px;
+  font-size: 2rem;
+  color: white;
+}
+
 .background {
   background-color: lightcyan;
 }
