@@ -4,10 +4,23 @@ import{
 } from './app.js'
 
 
+//Constants
+const submitButton = document.getElementById('submit-btn');
+const resetButton = document.getElementById('reset-btn');
+const cleanButton = document.getElementById('clean-results-btn');
+const overallResultsButton = document.getElementById('overall-results-btn');
+const personalResultsButton = document.getElementById('personal-results-btn');
+
+const resultsTitle = document.getElementById('results-title');
+const divOverallResults = document.getElementById('overall-results');
+const divPersonalResults = document.getElementById('time-results');
+
+
+// App UI Functions
 
 function printTimeDifferenceResults(timeResultsObj){
 
-    const divTimeResults = document.getElementById('time-results');
+    const divPersonalResults = document.getElementById('time-results');
 
     for (let time in timeResultsObj){
         const divResult = document.createElement('div');
@@ -33,7 +46,7 @@ function printTimeDifferenceResults(timeResultsObj){
         divResult.appendChild(resultMeasure);
         divResult.appendChild(resultValue);
 
-        divTimeResults.appendChild(divResult);
+        divPersonalResults.appendChild(divResult);
     }
 
 }
@@ -42,13 +55,11 @@ function printName(informationObject){
 
     const {name, daysQuantity} = informationObject;
 
-    const divTimeResults = document.getElementById('time-results');
-
     const pName = document.createElement('p');
     pName.classList.add('p-Name');
     pName.innerHTML = `${name}, los tiempos para ${daysQuantity} días son:`;
 
-    divTimeResults.appendChild(pName);
+    divPersonalResults.appendChild(pName);
 }
 
 function showMessage(msg, container){
@@ -73,10 +84,167 @@ function hideMessage(){
     }
 }
 
+function hideFormUI(){
+    
+    form.classList.remove('showing')
+    form.classList.add('hidden');
+
+    submitButton.classList.remove('showing')
+    submitButton.classList.add('hidden');
+    
+    resetButton.classList.remove('showing')
+    resetButton.classList.add('hidden');
+    
+    showCleanButtonUI();
+    showOverallResultsButtonUI();
+    
+    resultsTitle.classList.remove('hidden');
+    resultsTitle.classList.add('showing');
+}
+
+function showFormUI(){
+    form.classList.remove('hidden');
+    form.classList.add('showing')
+    
+    resetButton.classList.remove('hidden');
+    resetButton.classList.add('showing')
+
+    submitButton.classList.remove('hidden');
+    submitButton.classList.add('showing')
+
+    resultsTitle.classList.remove('showing');
+    resultsTitle.classList.add('hidden');
+}
+
+function hideResultsButtonsUI(){
+    hideCleanButtonUI();
+    hideOverallResultsButtonUI();
+    hidePersonalResultsButtonUI();
+}
+
+function hidePersonalResultsButtonUI(){
+    personalResultsButton.classList.remove('showing');
+    personalResultsButton.classList.add('hidden');
+}
+
+function showPersonalResultsButtonUI(){
+    personalResultsButton.classList.remove('hidden');
+    personalResultsButton.classList.add('showing');
+}
+
+function hideCleanButtonUI(){
+    cleanButton.classList.remove('showing');
+    cleanButton.classList.add('hidden');
+}
+
+function showCleanButtonUI(){
+    cleanButton.classList.remove('hidden');
+    cleanButton.classList.add('showing');
+}
+
+function hideOverallResultsButtonUI(){
+    overallResultsButton.classList.remove('showing');
+    overallResultsButton.classList.add('hidden');
+}
+
+function showOverallResultsButtonUI(){
+    overallResultsButton.classList.remove('hidden');
+    overallResultsButton.classList.add('showing');
+}
+
+function printOverallResults(resultsQuantity, resultsObject){
+
+    const divResults = document.createElement('div');
+
+    let resultsObjectHTML = '';
+    for(let key in resultsObject){
+        let actualObject = resultsObject[key];
+        resultsObjectHTML += `
+            </br><p>${actualObject.daysQuantity}</p></p>${actualObject.name}</p>
+            `;
+    }
+
+    divResults.innerHTML = `
+        <div>Cálculos realizados con ${resultsQuantity} respuestas:</div>
+        </br>
+        <div>${resultsObjectHTML}</div>
+    `;
+
+    divOverallResults.appendChild(divResults);
+
+}
+
+function cleanResultsUI(){
+    cleanHTML(divPersonalResults);
+    cleanHTML(divOverallResults);
+}
+
+function cleanPersonalResultsUI(){
+    cleanHTML(divPersonalResults);
+}
+function cleanOverallResultsUI(){
+    cleanHTML(divOverallResults);
+}
+
+function hidePersonalResultsUI(){
+    resultsTitle.innerHTML = `Resultados globales`;
+    divPersonalResults.classList.remove('showing');
+    divPersonalResults.classList.add('hidden');
+}
+
+function showPersonalResultsUI(){
+    hideOverallResultsUI();
+    hidePersonalResultsButtonUI();
+    showOverallResultsButtonUI();
+    resultsTitle.innerHTML = `Resultado Individual`;
+    divPersonalResults.classList.remove('hidden');
+    divPersonalResults.classList.add('showing');
+}
+
+function hideOverallResultsUI(){
+    resultsTitle.innerHTML = `Resultado Individual`;
+    divOverallResults.classList.remove('showing');
+    divOverallResults.classList.add('hidden');
+}
+
+function showOverallResultsUI(){
+    resultsTitle.innerHTML = `Resultados Globales`;
+    divOverallResults.classList.remove('hidden');
+    divOverallResults.classList.add('showing');
+}
+
 
 export {
-    printTimeDifferenceResults,
+    submitButton,
+    resetButton,
+    cleanButton,
+    overallResultsButton,
+    personalResultsButton,
+
     printName,
+    printTimeDifferenceResults,
+    printOverallResults,
+
     showMessage,
-    hideMessage
+    hideMessage,
+    
+    hideFormUI,
+    showFormUI,
+
+    cleanResultsUI,
+    cleanPersonalResultsUI,
+    cleanOverallResultsUI,
+
+    hideResultsButtonsUI,
+    showPersonalResultsUI,
+    hidePersonalResultsUI,
+    showOverallResultsUI,
+
+    hideCleanButtonUI,
+    showCleanButtonUI,
+    hideOverallResultsButtonUI,
+    showOverallResultsButtonUI,
+    hidePersonalResultsButtonUI,
+    showPersonalResultsButtonUI
+    
 }

@@ -1,15 +1,39 @@
 import { 
-    timeSum,
-    formatTime,
-    calculateTotalTime,
     calculateTimeDifference,
-    timeDifference
 } from "./timeOperations.js"
 
 import {
+    submitButton,
+    resetButton,
+    cleanButton,
+    overallResultsButton,
+    personalResultsButton,
+
     printName,
+    printTimeDifferenceResults,
+    printOverallResults,
+
     showMessage,
-    hideMessage
+    hideMessage,
+    
+    hideFormUI,
+    showFormUI,
+
+    cleanResultsUI,
+    cleanPersonalResultsUI,
+    cleanOverallResultsUI,
+
+    hideResultsButtonsUI,
+    showPersonalResultsUI,
+    hidePersonalResultsUI,
+    showOverallResultsUI,
+
+    hideCleanButtonUI,
+    showCleanButtonUI,
+    hideOverallResultsButtonUI,
+    showOverallResultsButtonUI,
+    hidePersonalResultsButtonUI,
+    showPersonalResultsButtonUI
 } from "./UI.js"
 
 import { 
@@ -28,15 +52,8 @@ const inputMorningArriveTime = document.getElementById('morning-arrive-time');
 const inputNigthStartTime = document.getElementById('nigth-start-time');
 const inputNigthArriveTime = document.getElementById('nigth-arrive-time');
 
-const submitButton = document.getElementById('submit-btn');
-const resetButton = document.getElementById('reset-btn');
-const cleanButton = document.getElementById('clean-results-btn');
-const overallResultsButton = document.getElementById('overall-results-btn');
-
-const resultsTitle = document.getElementById('results-title');
-const divResults = document.getElementById('results');
-const divTimeResults = document.getElementById('time-results');
 const divLoading = document.getElementById('loading');
+
 
 // Form
 const form = document.getElementById('time-calculus');
@@ -62,17 +79,17 @@ function eventListeners(){
         submitButton.addEventListener('click', submitForm);
         resetButton.addEventListener('click', resetForm);
         cleanButton.addEventListener('click', cleanButtonActionUI);
-        overallResultsButton.addEventListener('click', overallResults)
+        overallResultsButton.addEventListener('click', overallResults);
+        personalResultsButton.addEventListener('click', showPersonalResultsUI)
 
         writeDefaultValuesInForm();
     })
-    cleanButton.addEventListener('click', cleanResults);
+    cleanButton.addEventListener('click', cleanResultsUI);
 
 }
 
 
 // Functions
-
 function writeDefaultValuesInForm(){
     inputName.value = "Santiago";
     inputdaysQuantity.value = 250;
@@ -83,14 +100,41 @@ function writeDefaultValuesInForm(){
 
 }
 
-async function submitForm(e){
+function submitForm(e){
     e.preventDefault();
+    try {
+        cleanResultsUI();
+    
+        informationObject = validateFormValues();
 
-    cleanResults();
+        if(!informationObject){ return }
+        
+        showMessage("Cargando Resultados", divLoading)
+    
+        postResponse(informationObject)
+        .then((res)=>{
+            console.log({res});
+        })
+        .then(()=>{
+            setTimeout(() => {
+                hideMessage(divLoading)
+            } , 1500);
+        })
+        .then(()=>{
+            submitFormUI();
+            printName(informationObject);
+            calculateTimeDifference(informationObject);
+            showPersonalResultsUI();
+        })
+        
+    } catch (error) {
+        console.log(error);
+    }
+
+}
 
 
-    let informationObject = {};
-
+function validateFormValues(){
     const name = inputName.value;
     const daysQuantity = Number(inputdaysQuantity.value);
     const morningStartTime = inputMorningStartTime.value;
@@ -108,12 +152,10 @@ async function submitForm(e){
 
     ) {
         alert("No ha diligenciado todos los campos del formulario", "error");
-        return;
+        return false;
     }
 
-    
-    
-    informationObject = {
+    return informationObject = {
         name,
         daysQuantity,
         morningStartTime,
@@ -121,77 +163,75 @@ async function submitForm(e){
         nigthStartTime,
         nigthArriveTime
     }
-    
-    showMessage("Esperando Resultados", divLoading)
-
-    postResponse(informationObject)
-    .then((res)=>{
-        console.log({res});
-    })
-    .then(()=>{
-        setTimeout(() => {
-            hideMessage(divLoading)
-        } , 1500);
-    })
-    .then(()=>{
-        submitFormActionUI();
-        printName(informationObject);
-        calculateTimeDifference(informationObject);
-    })
-}
-
-async function overallResults(){
-    let response = getResults();
-
-    console.log({response})
 
 }
 
-function submitFormActionUI(){
-    
-    form.classList.remove('showing')
-    form.classList.add('hidden');
+function overallResults(){
+    try {
+        let resultsQuantity = 0;
+        let results = {};
 
-    submitButton.classList.remove('showing')
-    submitButton.classList.add('hidden');
-    
-    resetButton.classList.remove('showing')
-    resetButton.classList.add('hidden');
-    
-    cleanButton.classList.remove('hidden');
-    cleanButton.classList.add('showing');
-    
-    overallResultsButton.classList.remove('hidden');
-    overallResultsButton.classList.add('showing');
-    
-    resultsTitle.classList.remove('hidden');
-    resultsTitle.classList.add('showing');
+        showMessage("Cargando Resultados Globales", divLoading)
+
+        getResults()
+        .then((response) => {
+            resultsQuantity = response.count;
+            results = response.results;
+        })
+        .then(()=>{
+            setTimeout(() => {
+                hideMessage(divLoading)
+            } , 1500);
+        })
+        .then(()=>{
+            const res = results.map((result) => {
+                result = {
+                    daysQuantity: result.daysQuantity,
+                    name: result.name
+                }
+                return result;
+            });
+         
+            // cleanResultsUI();
+            cleanOverallResultsUI();
+            hidePersonalResultsUI();
+            hideOverallResultsButtonUI();
+            showPersonalResultsButtonUI();
+            printOverallResults(resultsQuantity, res);
+            showOverallResultsUI();
+        })
+        
+        
+    } catch (error) {
+        console.log(error);
+    }
+    //Estructura del objeto
+    /*
+    daysQuantity: 250
+    morningArriveTime: "09:30"
+    morningStartTime: "08:00"
+    name: "Santiago"
+    nigthArriveTime: "18:30"
+    nigthStartTime: "17:50"
+    _id: 
+
+    */
+
+
 }
+
+
+function submitFormUI(){
+    hideFormUI();
+}
+
 
 function cleanButtonActionUI(){
-    form.classList.remove('hidden');
-    form.classList.add('showing')
-
-    cleanButton.classList.remove('showing');
-    cleanButton.classList.add('hidden');
-    
-    overallResultsButton.classList.remove('showing');
-    overallResultsButton.classList.add('hidden');
-    
-    resetButton.classList.remove('hidden');
-    resetButton.classList.add('showing')
-
-    submitButton.classList.remove('hidden');
-    submitButton.classList.add('showing')
-
-    resultsTitle.classList.remove('showing');
-    resultsTitle.classList.add('hidden');
-    
+    showFormUI();
+    hideResultsButtonsUI();
+    cleanResultsUI();
 }
 
-function cleanResults(){
-    cleanHTML(divTimeResults);
-}
 
 function resetForm(){
     form.reset();
