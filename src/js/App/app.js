@@ -84,7 +84,6 @@ function eventListeners(){
 
         writeDefaultValuesInForm();
     })
-    cleanButton.addEventListener('click', cleanResultsUI);
 
 }
 
@@ -227,9 +226,13 @@ function submitFormUI(){
 
 
 function cleanButtonActionUI(){
-    showFormUI();
-    hideResultsButtonsUI();
-    cleanResultsUI();
+    let confirmation = window.confirm("¿Llenar de nuevo el Formulario?");
+    console.log({confirmation});
+    if (confirmation) {
+        showFormUI();
+        hideResultsButtonsUI();
+        cleanResultsUI();
+    }
 }
 
 
