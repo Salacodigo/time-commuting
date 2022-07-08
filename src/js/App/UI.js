@@ -175,8 +175,8 @@ function printOverallResults(resultsQuantity, resultsObject){
 }
 
 function cleanResultsUI(){
-    cleanHTML(divPersonalResults);
-    cleanHTML(divOverallResults);
+    cleanPersonalResultsUI();
+    cleanOverallResultsUI();
 }
 
 function cleanPersonalResultsUI(){

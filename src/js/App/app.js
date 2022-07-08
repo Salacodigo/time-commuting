@@ -96,7 +96,6 @@ function writeDefaultValuesInForm(){
     inputMorningArriveTime.value = '09:30';
     inputNigthStartTime.value = '17:50';
     inputNigthArriveTime.value = '18:30';
-
 }
 
 function submitForm(e){
