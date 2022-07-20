@@ -99,8 +99,6 @@ function multiplyTime(date, daysQuantity){
         totalHours, 
         totalMinutes
     }
-    console.log(totalTime);
-    console.log({totalTime});
     return totalTime;
 }
 

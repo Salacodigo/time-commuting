@@ -37,7 +37,6 @@ import {
 } from "./UI.js"
 
 import { 
-    postResponse,
     postForm,
     getResults
 } from "../Services/formResponseService.js"
@@ -136,11 +135,6 @@ function submitForm(e){
         .then((res)=>{
             console.log({res, "Respuesta nueva":true});
         })
-
-        postResponse(informationObject)
-        .then((res)=>{
-            console.log({res});
-        })
         .then(()=>{
             setTimeout(() => {
                 hideMessage(divLoading)
@@ -202,27 +196,21 @@ function calculateTimeValues(informationObject){
         nigthArriveTime
     } = informationObject;
 
-    const myDate = new Date(Date.UTC(2020, 1, 26, 15, 0, 0));
-
+    // Converting Text Responses to Date Ones
     let dateMorningStartTime = textTimeToDateFormat(morningStartTime);
     let dateMorningArriveTime = textTimeToDateFormat(morningArriveTime);
     let dateNigthStartTime = textTimeToDateFormat(nigthStartTime);
     let dateNigthArriveTime = textTimeToDateFormat(nigthArriveTime);
+    
     let dateMorningDifferenceTime = calculateTimeDifference2(dateMorningStartTime, dateMorningArriveTime);
     let dateNigthDifferenceTime = calculateTimeDifference2(dateNigthStartTime, dateNigthArriveTime);
+    
     let dateTotalDailyTime = sumHoursAndMinutes(dateMorningDifferenceTime, dateNigthDifferenceTime);
-    let prueba = multiplyTime(dateTotalDailyTime, daysQuantity);
-    console.log({prueba});
-    let dateTotalDaysTime = prueba;
+    let dateTotalDaysTime = multiplyTime(dateTotalDailyTime, daysQuantity);
 
     let newInformationObject = {
         name,
         daysQuantity,
-        morningStartTime,
-        morningArriveTime,
-        nigthStartTime,
-        nigthArriveTime,
-
         dateMorningStartTime,
         dateMorningArriveTime,
         dateNigthStartTime,
