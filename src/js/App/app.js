@@ -38,8 +38,16 @@ import {
 
 import { 
     postResponse,
+    postForm,
     getResults
 } from "../Services/formResponseService.js"
+import { 
+    textTimeToDateFormat,
+    calculateTimeDifference2,
+    sumHoursAndMinutes,
+    multiplyTime
+
+} from "./dateOperations.js";
 
 
 
@@ -70,6 +78,15 @@ let informationObject = {
 };
 
 
+let newInformationObject = {
+    name: "",
+    daysQuantity: 0,
+    morningStartTime: "",
+    morningArriveTime: "",
+    nigthStartTime: "",
+    nigthArriveTime: "",
+    datemorningStartTime: ""
+}
 
 // Event Listeners
 eventListeners();
@@ -98,6 +115,9 @@ function writeDefaultValuesInForm(){
     inputNigthArriveTime.value = '18:30';
 }
 
+//Date Format Implementing
+
+
 function submitForm(e){
     e.preventDefault();
     try {
@@ -106,9 +126,17 @@ function submitForm(e){
         informationObject = validateFormValues();
 
         if(!informationObject){ return }
+
+        newInformationObject = calculateTimeValues(informationObject);
         
         showMessage("Cargando Resultados", divLoading)
-    
+        
+        // NEW POST
+        postForm(newInformationObject)
+        .then((res)=>{
+            console.log({res, "Respuesta nueva":true});
+        })
+
         postResponse(informationObject)
         .then((res)=>{
             console.log({res});
@@ -162,6 +190,52 @@ function validateFormValues(){
         nigthArriveTime
     }
 
+}
+
+function calculateTimeValues(informationObject){
+    const {
+        name,
+        daysQuantity,
+        morningStartTime,
+        morningArriveTime,
+        nigthStartTime,
+        nigthArriveTime
+    } = informationObject;
+
+    const myDate = new Date(Date.UTC(2020, 1, 26, 15, 0, 0));
+
+    let dateMorningStartTime = textTimeToDateFormat(morningStartTime);
+    let dateMorningArriveTime = textTimeToDateFormat(morningArriveTime);
+    let dateNigthStartTime = textTimeToDateFormat(nigthStartTime);
+    let dateNigthArriveTime = textTimeToDateFormat(nigthArriveTime);
+    let dateMorningDifferenceTime = calculateTimeDifference2(dateMorningStartTime, dateMorningArriveTime);
+    let dateNigthDifferenceTime = calculateTimeDifference2(dateNigthStartTime, dateNigthArriveTime);
+    let dateTotalDailyTime = sumHoursAndMinutes(dateMorningDifferenceTime, dateNigthDifferenceTime);
+    let prueba = multiplyTime(dateTotalDailyTime, daysQuantity);
+    console.log({prueba});
+    let dateTotalDaysTime = prueba;
+
+    let newInformationObject = {
+        name,
+        daysQuantity,
+        morningStartTime,
+        morningArriveTime,
+        nigthStartTime,
+        nigthArriveTime,
+
+        dateMorningStartTime,
+        dateMorningArriveTime,
+        dateNigthStartTime,
+        dateNigthArriveTime,
+        dateMorningDifferenceTime,
+        dateNigthDifferenceTime,
+        dateTotalDailyTime,
+        dateTotalDaysTime
+
+    }
+
+    return newInformationObject;
+    
 }
 
 function overallResults(){
