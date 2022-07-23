@@ -14,33 +14,69 @@ const personalResultsButton = document.getElementById('personal-results-btn');
 const resultsTitle = document.getElementById('results-title');
 const divOverallResults = document.getElementById('overall-results');
 const divPersonalResults = document.getElementById('time-results');
-
+const variablesNameUIObject = {
+    dateMorningDifferenceTime : "en la mañana",
+    dateNigthDifferenceTime : "en la noche",
+    dateTotalDailyTime : "total en un día",
+    dateTotalDaysTime : "total de camino al trabajo"
+}
 
 // App UI Functions
 
 function printTimeDifferenceResults(timeResultsObj){
+    console.log("Desde Funcion",{timeResultsObj});
 
+    const{
+        dateMorningArriveTime,
+        dateMorningDifferenceTime,
+        dateMorningStartTime,
+        dateNigthArriveTime,
+        dateNigthDifferenceTime,
+        dateNigthStartTime,
+        dateTotalDailyTime,
+        dateTotalDaysTime
+    } = timeResultsObj;
+
+    let printedObject = {
+        dateMorningDifferenceTime,
+        dateNigthDifferenceTime,
+        dateTotalDailyTime,
+        dateTotalDaysTime
+    }
+    
     const divPersonalResults = document.getElementById('time-results');
 
-    for (let time in timeResultsObj){
+    for (let time in printedObject){
         const divResult = document.createElement('div');
         divResult.classList.add('result-container');
 
         const resultText = document.createElement('p');
         resultText.classList.add('text-result');
-        resultText.innerHTML = `Tiempo de viaje: ${time}`;
+        resultText.innerHTML = `Tiempo de viaje ${variablesNameUIObject[time]}`;
         
         const resultMeasure = document.createElement('p')
         resultMeasure.classList.add('text-result-magnitude');
-        if(time != 'totalTime'){
-            resultMeasure.innerHTML = `[Hours : Minutes]`;
-        }else{
-            resultMeasure.innerHTML = `[Years : Months : Days : Hours : Minutes]`;
-        }
-
+        
         const resultValue = document.createElement('p');
         resultValue.classList.add('numeric-result');
-        resultValue.innerHTML = `${timeResultsObj[time]}`;
+
+        if(time != 'dateTotalDaysTime'){
+            resultMeasure.innerHTML = `[Hours : Minutes]`;
+            resultValue.innerHTML = `
+                ${timeResultsObj[time].getUTCHours()}:
+                ${timeResultsObj[time].getUTCMinutes()}
+            `;
+        }else{
+            resultMeasure.innerHTML = `[Years : Months : Days : Hours : Minutes]`;
+            resultValue.innerHTML = `
+                ${timeResultsObj[time].totalYears}:
+                ${timeResultsObj[time].totalMonths}:
+                ${timeResultsObj[time].totalDays}:
+                ${timeResultsObj[time].totalHours}:
+                ${timeResultsObj[time].totalMinutes}
+            `;
+        }
+
 
         divResult.appendChild(resultText);
         divResult.appendChild(resultMeasure);
@@ -57,7 +93,7 @@ function printName(informationObject){
 
     const pName = document.createElement('p');
     pName.classList.add('p-Name');
-    pName.innerHTML = `${name}, los tiempos para ${daysQuantity} días son:`;
+    pName.innerHTML = `${name}, los resultados para ${daysQuantity} días son:`;
 
     divPersonalResults.appendChild(pName);
 }

@@ -78,14 +78,18 @@ let informationObject = {
 
 
 let newInformationObject = {
-    name: "",
-    daysQuantity: 0,
-    morningStartTime: "",
-    morningArriveTime: "",
-    nigthStartTime: "",
-    nigthArriveTime: "",
-    datemorningStartTime: ""
+    name: null,
+    daysQuantity: null,
+    dateMorningStartTime: null,
+    dateMorningArriveTime: null,
+    dateNigthStartTime: null,
+    dateNigthArriveTime: null,
+    dateMorningDifferenceTime: null,
+    dateNigthDifferenceTime: null,
+    dateTotalDailyTime: null,
+    dateTotalDaysTime: null,
 }
+
 
 // Event Listeners
 eventListeners();
@@ -143,7 +147,10 @@ function submitForm(e){
         .then(()=>{
             submitFormUI();
             printName(informationObject);
-            calculateTimeDifference(informationObject);
+            //to Delete
+            //calculateTimeDifference(informationObject);
+            //NEw lines
+            printTimeDifferenceResults(newInformationObject)
             showPersonalResultsUI();
         })
         
@@ -219,7 +226,6 @@ function calculateTimeValues(informationObject){
         dateNigthDifferenceTime,
         dateTotalDailyTime,
         dateTotalDaysTime
-
     }
 
     return newInformationObject;
@@ -265,19 +271,6 @@ function overallResults(){
     } catch (error) {
         console.log(error);
     }
-    //Estructura del objeto
-    /*
-    daysQuantity: 250
-    morningArriveTime: "09:30"
-    morningStartTime: "08:00"
-    name: "Santiago"
-    nigthArriveTime: "18:30"
-    nigthStartTime: "17:50"
-    _id: 
-
-    */
-
-
 }
 
 

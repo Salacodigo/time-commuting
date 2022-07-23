@@ -3,8 +3,10 @@ function textTimeToDateFormat(textHoursMinutes){
     let hours = Number(textSplited[0]);
     let minutes = Number(textSplited[1]);
 
-    let newDate = new Date(Date.UTC( 2000, 1, 1, hours, minutes)); //{ 'Wed Jan 31 1900 23:58:44 GMT-0456 (Colombia Standard Time)' }
     
+    let newDate = new Date(Date.UTC( 2000, 1, 1, 0, minutes)); //{ 'Wed Jan 31 1900 23:58:44 GMT-0456 (Colombia Standard Time)' }
+    newDate.setUTCHours(hours);
+
     return newDate;
 }
 
@@ -22,7 +24,7 @@ function calculateTimeDifference2(startTime, finalTime){
 
     //Saving the diference as a Date format
     //year 2010 works as a flag to identify dates storing differences
-    timeDifference = new Date( Date.UTC(2010, 1, 1, hoursDifference, minutesDifference));
+    timeDifference = new Date( Date.UTC(2010, 2, 1, hoursDifference, minutesDifference));
 
     return timeDifference;
 }
