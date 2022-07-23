@@ -15,11 +15,13 @@
     }
     
     .result-container{
-        margin: 5px 0px 15px 60px;
+        margin: 5px 0px 15px 0px;
+        text-align: center;
         
         .text-result{
             font-size: 1rem;
             color: gray;
+            text-align: start;
         }
         .text-result-magnitude{
             color: gray;

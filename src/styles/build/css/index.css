@@ -16,7 +16,7 @@
   bottom: 2px solid gray;
   display: flex;
   justify-content: center;
-  font-size: 2.5rem;
+  font-size: 2rem;
   margin: 10px 0px 15px;
   font-family: "IBM Plex Mono", monospace;
 }
@@ -100,7 +100,7 @@
   justify-self: center;
   justify-content: center;
   align-items: center;
-  font-size: 1rem;
+  font-size: 0.8rem;
   letter-spacing: 2.8px;
 }
 .btn:hover {
@@ -151,11 +151,13 @@
   letter-spacing: 2px;
 }
 .results .result-container {
-  margin: 5px 0px 15px 60px;
+  margin: 5px 0px 15px 0px;
+  text-align: center;
 }
 .results .result-container .text-result {
   font-size: 1rem;
   color: gray;
+  text-align: start;
 }
 .results .result-container .text-result-magnitude {
   color: gray;
