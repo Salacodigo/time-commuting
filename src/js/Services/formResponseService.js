@@ -1,4 +1,4 @@
-const url = process.env.API_URL; // Heroku
+const url = 'https://backend-time-commuting.vercel.app'; // Vercel
 
 async function getResults(){
 
