@@ -1,4 +1,4 @@
-const url = "https://time-commuting-backend.herokuapp.com"; // Heroku
+// const url = "https://time-commuting-backend.herokuapp.com"; // Heroku
 const url = process.env.API_URL; // Heroku
 
 async function getResults(){
