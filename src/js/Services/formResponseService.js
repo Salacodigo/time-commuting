@@ -1,5 +1,5 @@
-// const url = "http://127.0.0.1:4000"; // Localhost
 const url = "https://time-commuting-backend.herokuapp.com"; // Heroku
+const url = process.env.API_URL; // Heroku
 
 async function getResults(){
 
